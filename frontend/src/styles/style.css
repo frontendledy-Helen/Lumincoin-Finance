@@ -1,0 +1,84 @@
+html, body {
+  height: 100%;
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url(../static/fonts/Roboto.ttf);
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.my-container {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.fs-min {
+    font-size: 12px;
+}
+
+.fs-md {
+    font-size: 14px;
+}
+
+aside .nav-link {
+    box-sizing: border-box;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}
+
+.my-border {
+    border-right: 1px solid #ccc;
+}
+
+@media (max-width: 575px) {
+    .my-border {
+        border-right: 0
+    }
+}
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.mt-60 {
+    margin-top: 60px;
+}
+
+.selected-category {
+    border: none;
+}
+
+.dropdown-toggle::after {
+    content: none;
+}
+
+.dropdown-menu {
+    border: none;
+}
+
+.ms-70 {
+    margin-left: 70px;
+}
+
+.btn-hover {
+    border: none;
+    text-decoration: none;
+}
+
+.accordion-button:hover img {
+    rotate: 90deg;
+}
+
+
+
+
+
+
+
+
+
+
