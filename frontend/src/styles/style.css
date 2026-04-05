@@ -1,5 +1,5 @@
 html, body {
-  height: 100%;
+
 }
 
 @font-face {
@@ -34,10 +34,21 @@ aside .nav-link {
     border-right: 1px solid #ccc;
 }
 
-@media (max-width: 575px) {
+@media (max-width: 768px) {
     .my-border {
         border-right: 0
     }
+}
+
+.border-category {
+    border: 2px solid #0d6efd;
+    border-radius: 0;
+}
+
+.border-line {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    border-top: 1px solid #dee2e6;
 }
 
 .mb-20 {
@@ -46,6 +57,16 @@ aside .nav-link {
 
 .mt-60 {
     margin-top: 60px;
+}
+
+@media (max-width: 767px) {
+    .mt-60 {
+        margin-top: 10px;
+    }
+}
+
+.mt-100 {
+    margin-top: 100px;
 }
 
 .selected-category {
@@ -69,8 +90,16 @@ aside .nav-link {
     text-decoration: none;
 }
 
-.accordion-button:hover img {
+.img-hover:hover .img-hover:active {
     rotate: 90deg;
+}
+
+.dropdown-toggle.show .img-hover {
+    transform: rotate(90deg); /* или нужный угол */
+}
+
+.show {
+    margin: 0 auto;
 }
 
 
