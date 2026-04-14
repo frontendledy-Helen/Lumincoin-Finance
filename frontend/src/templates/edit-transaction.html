@@ -1,22 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Lumincoin Finance</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="stylesheet" href="../styles/style.css">
-    <link rel="stylesheet" href="../styles/dashboard.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
+
 
 <div class="container-fluid p-0 m-0">
     <div class="row gx-0 min-vh-100">
         <aside class="d-block d-md-flex d-lg-flex d-xxl-flex flex-column justify-content-between col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-2 py-5 px-0 text-center my-border">
             <nav class="navbar mx-auto d-flex flex-column w-100">
                 <div class="logo d-flex text-center border-bottom w-100">
-                    <img src="../static/images/logo.png" alt="Logo" class="img-fluid mx-auto mb-4">
+                    <img src="../images/logo.png" alt="Logo" class="img-fluid mx-auto mb-4">
                 </div>
                 <!-- Кнопка только < md -->
                 <button class="navbar-toggler d-md-none mx-auto my-2" type="button"
@@ -30,18 +19,18 @@
                         <div class="mt-60 px-3">
                             <ul class="nav nav-pills flex-column fs-6 ">
                                 <li class="nav-item w-100">
-                                    <a href="dashboard.html"
+                                    <a href="#/dashboard"
                                        class="nav-link w-100 link-dark py-2 px-3 d-flex justify-content-start align-items-center"
                                        aria-current="page">
-                                        <img src="../static/images/icon-home-black.png" alt="Icon home"
+                                        <img src="../images/icon-home-black.png" alt="Icon home"
                                              class="img-fluid me-2 d-inline-block align-text-top">
                                         <p class="m-0 p-0 text-start">Главная</p>
                                     </a>
                                 </li>
                                 <li class="nav-item w-100">
-                                    <a href="transactions.html"
+                                    <a href="#/transactions"
                                        class="nav-link w-100 active py-2 text-start d-flex align-items-center text-wrap">
-                                        <img src="../static/images/icon-budget-white.png" alt="Icon budget"
+                                        <img src="../images/icon-budget-white.png" alt="Icon budget"
                                              class="img-fluid me-2 d-inline-block align-text-top">
                                         Доходы & Расходы
                                     </a>
@@ -52,17 +41,17 @@
                                             data-bs-auto-close="outside" aria-expanded="false">
                                         <span>Категории</span>
                                         <div class="icon-arrow img-hover">
-                                            <img src="../static/images/icon-arrow.png" alt="Arrow">
+                                            <img src="../images/icon-arrow.png" alt="Arrow">
                                         </div>
                                     </button>
                                     <ul class="dropdown-menu p-0 m-0 w-100"
                                         aria-labelledby="dropdownMenuClickableInside">
                                         <li>
                                             <a class="dropdown-item nav-link link-dark rounded-0 text-start px-3"
-                                               href="income-groups.html">Доходы</a></li>
+                                               href="#/income-groups">Доходы</a></li>
                                         <li>
                                             <a class="dropdown-item nav-link link-dark rounded-top-0 text-start px-3"
-                                               href="outlay-groups.html">Расходы</a></li>
+                                               href="#/outlay-groups">Расходы</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -76,25 +65,27 @@
                         class="text-primary">500 ₽</span></div>
                 <div class="border-top">
 
-                    <div class="d-flex align-items-center gap-2 mt-4">
-                        <div class="image-user">
-                            <img src="../static/images/icon-user.png" alt="User icon"
-                                 class="ps-3 me-2 d-inline-block align-text-top">
+                    <a href="javascript:void(0)" class="text-decoration-none text-dark" id="logout">
+                        <div class="d-flex align-items-center gap-2 mt-4" data-bs-toggle="tooltip" title="Выход">
+                            <div class="image-user">
+                                <img src="../images/icon-user.png" alt="User icon"
+                                     class="ps-3 me-2 d-inline-block align-text-top">
+                            </div>
+                            <p class="mb-0 text-start pe-3" id="user"></p>
                         </div>
-                        <p class="mb-0 text-start text-nowrap pe-3">Роман Чернов</p>
-                    </div>
+                    </a>
                 </div>
             </div>
         </aside>
 
         <section
-                class="content col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-10 pt-sm-0 pt-md-5 ps-3 ps-md-5 ps-lg-5 text-start"
+                class="content col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-10 pt-sm-0 pt-md-5 px-3 ps-md-5 ps-lg-5 text-start"
                 id="content">
             <h1 class="mb-4 mt-xl-5 mt-lg-5 mt-md-5 mt-sm-0">Редактирование дохода/расхода</h1>
 
             <div class="container-fluid m-0 px-0">
-                <div class="row">
-                    <div class="col-12 col-sm-10 col-md-9 col-lg-6 col-xxl-4 d-flex flex-column p-3">
+                <div class="row gx-0">
+                    <div class="col-12 col-sm-10 col-md-9 col-lg-6 col-xxl-4 d-flex flex-column">
                         <div class="form-group">
                             <input class="form-control mb-4" type="text" id="">
                             <input class="form-control mb-4" type="text" id="">
@@ -104,7 +95,7 @@
                         </div>
                         <div class="d-flex gap-2 buttons">
                             <button type="button" class="btn btn-success fs-md">Сохранить</button>
-                            <a href="transactions.html"><button type="button" class="btn btn-danger fs-md">Отмена</button></a>
+                            <a href="#/transactions"><button type="button" class="btn btn-danger fs-md">Отмена</button></a>
                         </div>
                     </div>
 
@@ -114,9 +105,3 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-        crossorigin="anonymous"></script>
-
-</body>
-</html>

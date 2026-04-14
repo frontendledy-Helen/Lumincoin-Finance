@@ -4,7 +4,7 @@ html, body {
 
 @font-face {
   font-family: "Roboto";
-  src: url(../static/fonts/Roboto.ttf);
+  src: url(../fonts/Roboto.ttf);
 }
 
 body {
@@ -102,6 +102,9 @@ aside .nav-link {
     margin: 0 auto;
 }
 
+/*.is-invalid {*/
+/*    border: 1px solid red;*/
+/*}*/
 
 
 
