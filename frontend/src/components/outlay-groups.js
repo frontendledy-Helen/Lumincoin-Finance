@@ -1,5 +1,4 @@
 import {AuthUtils} from "../utils/auth-utils.js";
-import {UserName} from "../utils/userName.js";
 
 
 export class OutlayGroups {
@@ -12,14 +11,9 @@ export class OutlayGroups {
 
         }
 
-        this.logoutElement = document.getElementById('logout');
-        this.logoutElement.addEventListener('click', this.goOutside.bind(this));
 
-        UserName.getUserName()
 
     }
 
-    goOutside() {
-        UserName.logoutInPage()
-    }
+
 }

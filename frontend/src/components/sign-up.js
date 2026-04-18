@@ -78,15 +78,14 @@ export class SignUp {
                 passwordRepeat: this.passwordRepeatElement.value
             });
 
-            console.log(result.response.message)
-
             // если у нас пришла с бэкенд ошибка, либо нет response:, либо есть response: но там нет accessToken или нет refreshToken или нет id, name
-            if (result.error || !result.response) { //если в ответе есть ошибка и нет необходимых параметров
-                if (result.response.message === 'User with given email already exist') {
+            if (result.error || !result.response) { //если в ответе есть ошибка и нет ответа
+                if (result.response && result.response.message === 'User with given email already exist') {
                     this.commonErrorElement.innerText = 'Пользователь с таким E-mail уже зарегистрирован.'
                     return;
                 }
                 this.commonErrorElement.innerText = 'Не удалось зарегистрировать пользователя. Обратитесь в поддержку.'
+                return;
             }
 
 

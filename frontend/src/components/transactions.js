@@ -1,7 +1,4 @@
 import {AuthUtils} from "../utils/auth-utils.js";
-import {HttpUtils} from "../utils/http-utils.js";
-import config from "../config/config.js";
-import {UserName} from "../utils/userName.js";
 
 
 export class Transactions {
@@ -13,17 +10,9 @@ export class Transactions {
 
         }
 
-        this.logoutElement = document.getElementById('logout');
-        this.logoutElement.addEventListener('click', this.goOutside.bind(this));
 
-        UserName.getUserName()
 
     }
-
-    goOutside() {
-        UserName.logoutInPage()
-    }
-
 
 
 

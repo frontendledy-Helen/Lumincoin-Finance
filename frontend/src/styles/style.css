@@ -91,22 +91,18 @@ aside .nav-link {
 }
 
 .img-hover:hover .img-hover:active {
-    rotate: 90deg;
+    rotate: 180deg;
 }
 
-.dropdown-toggle.show .img-hover {
-    transform: rotate(90deg); /* или нужный угол */
-}
 
 .show {
     margin: 0 auto;
 }
 
-/*.is-invalid {*/
-/*    border: 1px solid red;*/
-/*}*/
 
-
+.text-color {
+    color: #0d6efd;
+}
 
 
 

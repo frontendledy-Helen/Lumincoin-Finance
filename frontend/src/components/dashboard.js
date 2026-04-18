@@ -2,7 +2,7 @@
 // вызывать экземпляр класса будем в router.js в объекте массива routes, под load: () => new Dashboard()
 
 import {AuthUtils} from "../utils/auth-utils.js";
-import {UserName} from "../utils/userName.js";
+
 
 export class Dashboard {
     constructor() {
@@ -13,15 +13,9 @@ export class Dashboard {
 
         }
 
-        this.logoutElement = document.getElementById('logout');
-        this.logoutElement.addEventListener('click', this.goOutside.bind(this));
-
-        UserName.getUserName()
 
     }
 
-    goOutside() {
-        UserName.logoutInPage()
-    }
+
 
 }

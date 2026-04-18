@@ -1,169 +1,90 @@
-<div class="container-fluid p-0 m-0">
-    <div class="row gx-0 min-vh-100">
-        <aside class="d-block d-md-flex d-lg-flex d-xxl-flex flex-column justify-content-between col-sm-12 col-md-4 col-lg-3 col-xl-3 col-xxl-2 py-5 px-0 text-center my-border">
-            <nav class="navbar mx-auto d-flex flex-column w-100">
-                <div class="logo d-flex text-center border-bottom w-100">
-                    <img src="../images/logo.png" alt="Logo" class="img-fluid mx-auto mb-4">
-                </div>
-                <!-- Кнопка только < md -->
-                <button class="navbar-toggler d-md-none mx-auto my-2" type="button"
-                        data-bs-toggle="collapse" data-bs-target="#sidebarMenu"
-                        aria-controls="sidebarMenu" aria-expanded="false" aria-label="Меню">
-                    <span class="navbar-toggler-icon"></span>
+<div class="dashboard-container">
+
+    <h1 class="mt-xl-5 mt-lg-5 mt-md-5 mt-sm-0">Главная</h1>
+    <div class="container-fluid m-0 ps-0 pe-0">
+        <div class="mt-5">
+            <div class="row gx-0 d-grid gap-2 d-md-flex d-lg-flex mb-3 me-0">
+                <button class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-secondary" type="button">Сегодня
                 </button>
-                <div class="collapse d-md-block w-100 navbar"
-                     id="sidebarMenu">
-                    <div class=" w-100 fs-6">
-                        <div class="mt-60 px-3">
-                            <ul class="nav nav-pills flex-column fs-6 ">
-                                <li class="nav-item w-100">
-                                    <a href="javascript:void(0)" class="nav-link w-100 active py-2 text-start d-flex align-items-center"
-                                       aria-current="page">
-                                        <img src="../images/icon-home.png" alt="Icon home"
-                                             class="img-fluid me-2 d-inline-block align-text-top">
-                                        Главная
-                                    </a>
-                                </li>
-                                <li class="nav-item w-100">
-                                    <a href="#/transactions"
-                                       class="nav-link w-100 link-dark py-2 px-3 d-flex justify-content-start align-items-center">
-                                        <img src="../images/icon-budget.png" alt="Icon budget"
-                                             class="img-fluid me-2 d-inline-block align-text-top">
-                                        <p class="m-0 p-0 text-start text-nowrap">Доходы & Расходы</p>
-                                    </a>
-                                </li>
-                                <li class="btn-group border-category border-0">
-                                    <button class="btn dropdown-toggle nav-link link-dark rounded-bottom-0 d-flex justify-content-between border-category px-3 border-0 text-start"
-                                            type="button" id="dropdownMenuClickableInside" data-bs-toggle="dropdown"
-                                            data-bs-auto-close="outside" aria-expanded="false">
-                                        <span>Категории</span>
-                                        <div class="icon-arrow img-hover">
-                                            <img src="../images/icon-arrow.png" alt="Arrow">
-                                        </div>
-                                    </button>
-                                    <ul class="dropdown-menu p-0 m-0 w-100"
-                                        aria-labelledby="dropdownMenuClickableInside">
-                                        <li>
-                                            <a class="dropdown-item nav-link link-dark rounded-0 text-start px-3"
-                                               href="#/income-groups">Доходы</a></li>
-                                        <li>
-                                            <a class="dropdown-item nav-link link-dark rounded-top-0 text-start px-3"
-                                               href="#/outlay-groups">Расходы</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-
-            <div class="down">
-                <div class="balance text-start mb-20 mt-100 px-3">Баланс: <span
-                        class="text-primary">500 ₽</span></div>
-                <div class="border-top">
-                    <a href="javascript:void(0)" class="text-decoration-none text-dark" id="logout">
-                    <div class="d-flex align-items-center gap-2 mt-4" data-bs-toggle="tooltip" title="Выход">
-                         <div class="image-user">
-                            <img src="../images/icon-user.png" alt="User icon"
-                                 class="ps-3 me-2 d-inline-block align-text-top">
-                        </div>
-                        <p class="mb-0 text-start pe-3" id="user"></p>
-                    </div>
-                    </a>
+                <button class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary" type="button">
+                    Неделя
+                </button>
+                <button class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary" type="button">
+                    Месяц
+                </button>
+                <button class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary" type="button">Год
+                </button>
+                <button class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary" type="button">Все
+                </button>
+                <button class="col-12 col-md-4 col-lg-2 col-xxl-auto btn btn-outline-secondary" type="button">
+                    Интервал
+                </button>
+                <div class="col-12 col-md-5 col-lg-5 col-xxl-3 choice-date">
+                    <span>с</span>
+                    <button type="button" class="btn btn-link">Дата</button>
+                    <span>по</span>
+                    <button type="button" class="btn btn-link">Дата</button>
                 </div>
             </div>
-        </aside>
-
-        <section
-                class="content col-sm-12 col-md-8 col-lg-9 col-xl-9 col-xxl-10 pt-sm-0 pt-md-5 px-3 ps-md-5 ps-lg-5 pe-md-0 text-start"
-                id="content">
-            <h1 class="mt-xl-5 mt-lg-5 mt-md-5 mt-sm-0">Главная</h1>
-            <div class="container-fluid m-0 ps-0 pe-0">
-                <div class="mt-5">
-                    <div class="row gx-0 d-grid gap-2 d-md-flex d-lg-flex mb-3 me-0">
-                        <button class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-secondary" type="button">Сегодня
-                        </button>
-                        <button class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary" type="button">
-                            Неделя
-                        </button>
-                        <button class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary" type="button">
-                            Месяц
-                        </button>
-                        <button class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary" type="button">Год
-                        </button>
-                        <button class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary" type="button">Все
-                        </button>
-                        <button class="col-12 col-md-4 col-lg-2 col-xxl-auto btn btn-outline-secondary" type="button">
-                            Интервал
-                        </button>
-                        <div class="col-12 col-md-5 col-lg-5 col-xxl-3 choice-date">
-                            <span>с</span>
-                            <button type="button" class="btn btn-link">Дата</button>
-                            <span>по</span>
-                            <button type="button" class="btn btn-link">Дата</button>
-                        </div>
-                    </div>
+        </div>
+        <div class="row gx-0 mt-5 text-center pt-md-0 pt-lg-5">
+            <div class="col-xxl-6 col-lg-12 pb-5 my-border-block">
+                <h2 class="mb-3">Доходы</h2>
+                <div class="color-section mb-5">
+                    <label class="form-check-inline">
+                        <button class="btn btn-color bg-danger" type="button" id="incomeRed"></button>
+                        <span>Red</span>
+                    </label>
+                    <label class="form-check-inline">
+                        <button class="btn btn-color btn-orange" type="button" id="incomeOrange"></button>
+                        <span>Orange</span>
+                    </label>
+                    <label class="form-check-inline">
+                        <button class="btn btn-color bg-warning" type="button" id="incomeYellow"></button>
+                        <span>Yellow</span>
+                    </label>
+                    <label class="form-check-inline">
+                        <button class="btn btn-color btn-green" type="button" id="incomeGreen"></button>
+                        <span>Green</span>
+                    </label>
+                    <label class="form-check-inline">
+                        <button class="btn btn-color bg-primary" type="button" id="incomeBlue"></button>
+                        <span>Blue</span>
+                    </label>
                 </div>
-                <div class="row gx-0 mt-5 text-center pt-md-0 pt-lg-5">
-                    <div class="col-xxl-6 col-lg-12 pb-5 my-border-block">
-                        <h2 class="mb-3">Доходы</h2>
-                        <div class="color-section mb-5">
-                            <label class="form-check-inline">
-                                <button class="btn btn-color bg-danger" type="button" id="incomeRed"></button>
-                                <span>Red</span>
-                            </label>
-                            <label class="form-check-inline">
-                                <button class="btn btn-color btn-orange" type="button" id="incomeOrange"></button>
-                                <span>Orange</span>
-                            </label>
-                            <label class="form-check-inline">
-                                <button class="btn btn-color bg-warning" type="button" id="incomeYellow"></button>
-                                <span>Yellow</span>
-                            </label>
-                            <label class="form-check-inline">
-                                <button class="btn btn-color btn-green" type="button" id="incomeGreen"></button>
-                                <span>Green</span>
-                            </label>
-                            <label class="form-check-inline">
-                                <button class="btn btn-color bg-primary" type="button" id="incomeBlue"></button>
-                                <span>Blue</span>
-                            </label>
-                        </div>
-                        <div class="color-circle">
-                            <div class="mx-auto pie-circle-income"></div>
-                        </div>
-                    </div>
-
-                    <div class="col-xxl-6 col-lg-12">
-                        <h2 class="mb-3">Расходы</h2>
-                        <div class="color-section mb-5">
-                            <label class="form-check-inline">
-                                <button class="btn btn-color bg-danger" type="button" id="expenseRed"></button>
-                                <span>Red</span>
-                            </label>
-                            <label class="form-check-inline">
-                                <button class="btn btn-color btn-orange" type="button" id="expenseOrange"></button>
-                                <span>Orange</span>
-                            </label>
-                            <label class="form-check-inline">
-                                <button class="btn btn-color bg-warning" type="button" id="expenseYellow"></button>
-                                <span>Yellow</span>
-                            </label>
-                            <label class="form-check-inline">
-                                <button class="btn btn-color btn-green" type="button" id="expenseGreen"></button>
-                                <span>Green</span>
-                            </label>
-                            <label class="form-check-inline">
-                                <button class="btn btn-color bg-primary" type="button" id="expenseBlue"></button>
-                                <span>Blue</span>
-                            </label>
-                        </div>
-                        <div class="color-circle">
-                            <div class="mx-auto pie-circle-expenses"></div>
-                        </div>
-                    </div>
+                <div class="color-circle">
+                    <div class="mx-auto pie-circle-income"></div>
                 </div>
             </div>
-        </section>
+
+            <div class="col-xxl-6 col-lg-12">
+                <h2 class="mb-3">Расходы</h2>
+                <div class="color-section mb-5">
+                    <label class="form-check-inline">
+                        <button class="btn btn-color bg-danger" type="button" id="expenseRed"></button>
+                        <span>Red</span>
+                    </label>
+                    <label class="form-check-inline">
+                        <button class="btn btn-color btn-orange" type="button" id="expenseOrange"></button>
+                        <span>Orange</span>
+                    </label>
+                    <label class="form-check-inline">
+                        <button class="btn btn-color bg-warning" type="button" id="expenseYellow"></button>
+                        <span>Yellow</span>
+                    </label>
+                    <label class="form-check-inline">
+                        <button class="btn btn-color btn-green" type="button" id="expenseGreen"></button>
+                        <span>Green</span>
+                    </label>
+                    <label class="form-check-inline">
+                        <button class="btn btn-color bg-primary" type="button" id="expenseBlue"></button>
+                        <span>Blue</span>
+                    </label>
+                </div>
+                <div class="color-circle">
+                    <div class="mx-auto pie-circle-expenses"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

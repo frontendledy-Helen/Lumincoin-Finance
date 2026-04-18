@@ -41,8 +41,6 @@ export class Login {
 
     async login() {
 
-        this.commonErrorElement.style.display = 'none'; // скрываем блок показывающий ошибку
-
         if (this.validateForm()) {  // если isValid не изменился, а остался true - то значение функции вернулось true
 
             const result = await HttpUtils.request('/login', 'POST', false, {
@@ -52,12 +50,16 @@ export class Login {
             });
 
 
-            // если у нас пришла с бэкенд ошибка, либо нет response:, либо есть response: но там нет accessToken или нет refreshToken или нет id, name
-            if (result.error || !result.response || (result.response && (!result.response.tokens.accessToken || !result.response.tokens.refreshToken || !result.response.user.id || !result.response.user.name)) ) { //если в ответе есть ошибка и нет необходимых параметров
-                this.commonErrorElement.style.display = 'block'; // показываем блок показывающий ошибку при авторизации
+           // если у нас пришла с бэкенд ошибка, либо нет response:, либо есть response: но там нет accessToken или нет refreshToken или нет id, name
+            if (!result.response) { //если в ответе есть ошибка и нет ответа
+                this.commonErrorElement.innerText = 'Не удалось получить ответ. Обратитесь в поддержку.'
                 return;
             }
 
+            if (result.error || (result.response && (!result.response.tokens.accessToken || !result.response.tokens.refreshToken || !result.response.user.id || !result.response.user.name))) {
+                this.commonErrorElement.innerText = 'Неправильный E-mail или пароль.'
+                return;
+            }
 
             // если пользователь найден сохраняем его данные с бэкенда сюда
             AuthUtils.setAuthInfo(result.response.tokens.accessToken, result.response.tokens.refreshToken, {id: result.response.user.id, name: result.response.user.name, lastName: result.response.user.lastName})
