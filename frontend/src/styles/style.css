@@ -4,7 +4,7 @@ html, body {
 
 @font-face {
   font-family: "Roboto";
-  src: url(../static/fonts/Roboto.ttf);
+  src: url(../fonts/Roboto.ttf);
 }
 
 body {
@@ -91,19 +91,18 @@ aside .nav-link {
 }
 
 .img-hover:hover .img-hover:active {
-    rotate: 90deg;
+    rotate: 180deg;
 }
 
-.dropdown-toggle.show .img-hover {
-    transform: rotate(90deg); /* или нужный угол */
-}
 
 .show {
     margin: 0 auto;
 }
 
 
-
+.text-color {
+    color: #0d6efd;
+}
 
 
 
