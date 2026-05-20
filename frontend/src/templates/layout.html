@@ -45,11 +45,17 @@
                                     <ul id="ul-show" class="dropdown-menu p-0 m-0 w-100"
                                         aria-labelledby="dropdownMenuClickableInside" data-bs-popper="static">
                                         <li>
-                                            <a id="income-groups" class="dropdown-item nav-link rounded-0 text-start px-3"
-                                               href="#/income-groups" data-routes="#/income-groups,#/create-income-group,#/edit-income-group">Доходы</a></li>
+                                            <a id="income-groups"
+                                               class="dropdown-item nav-link rounded-0 text-start px-3"
+                                               href="#/income-groups"
+                                               data-routes="#/income-groups,#/create-income-group,#/edit-income-group">Доходы</a>
+                                        </li>
                                         <li>
-                                            <a id="outlay-groups" class="dropdown-item nav-link rounded-top-0 text-start px-3"
-                                               href="#/outlay-groups" data-routes="#/outlay-groups,#/create-outlay-group,#/edit-outlay-group">Расходы</a></li>
+                                            <a id="outlay-groups"
+                                               class="dropdown-item nav-link rounded-top-0 text-start px-3"
+                                               href="#/outlay-groups"
+                                               data-routes="#/outlay-groups,#/create-outlay-group,#/edit-outlay-group">Расходы</a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
@@ -59,18 +65,24 @@
             </nav>
 
             <div class="down">
+                <a data-bs-toggle="modal" data-bs-target="#exampleModalAside" href="javascript:void(0)" class="text-decoration-none text-dark">
                 <div class="balance text-start mb-20 mt-100 px-3">Баланс: <span
-                        class="text-primary">500 ₽</span></div>
-                <div class="border-top">
-                    <a href="javascript:void(0)" class="text-decoration-none text-dark" id="logout">
-                        <div class="d-flex align-items-center gap-2 mt-4" data-bs-toggle="tooltip" title="Выход">
-                            <div class="image-user">
-                                <img src="../images/icon-user.png" alt="User icon"
-                                     class="ps-3 me-2 d-inline-block align-text-top">
+                        class="text-primary" id="balance"></span></div></a>
+                <div class="border-top text-start">
+                    <div class="dropdown" id="dropdown-toggle">
+                        <a href="javascript:void(0)" class="text-decoration-none text-dark dropdown-toggle mb-0">
+                            <div class="d-flex align-items-center gap-2 mt-4" data-bs-toggle="tooltip" title="Выход">
+                                <div class="image-user">
+                                    <img src="../images/icon-user.png" alt="User icon"
+                                         class="me-2 ps-3 d-inline-block align-text-top">
+                                </div>
+                                <p class="mb-0 pe-3" id="user"></p>
                             </div>
-                            <p class="mb-0 text-start pe-3" id="user"></p>
+                        </a>
+                        <div class="dropdown_menu text-center" role="menu">
+                            <a class="dropdown-item" id="logout" href="javascript:void(0)">Выйти</a></li>
                         </div>
-                    </a>
+                    </div>
                 </div>
             </div>
         </aside>
@@ -81,5 +93,23 @@
 
 
         </section>
+    </div>
+</div>
+
+<div class="modal fade text-center" id="exampleModalAside" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body px-0 pt-4 pb-2">
+                <p class="m-0">Обновить баланс?</p>
+            </div>
+            <label class="mx-5">
+                <input type="text" id="balance-input" class="form-control mb-4">
+            </label>
+            <div class="modal-footer justify-content-center border-top-0 text-center px-0 pt-0 pb-4">
+                <button type="button" class="btn btn-success" id="update-balance-button">Да, обновить</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Не обновлять</button>
+            </div>
+        </div>
     </div>
 </div>

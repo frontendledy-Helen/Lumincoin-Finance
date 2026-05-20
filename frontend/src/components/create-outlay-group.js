@@ -1,0 +1,55 @@
+import {AuthUtils} from "../utils/auth-utils.js";
+import {HttpUtils} from "../utils/http-utils.js";
+
+
+export class CreatOutlayGroup {
+
+    constructor() {
+
+        if (!AuthUtils.getAuthInfo(AuthUtils.accessTokenKey) || !AuthUtils.getAuthInfo(AuthUtils.refreshTokenKey)) { // если в localStorage нет accessToken и нет refreshToken
+            window.location.hash = '#/';  // останавливаем Ф и сразу отправляем пользователя на страницу login, чтобы зарегистрировался
+            return;
+
+        }
+
+        this.inputGroupElement = document.getElementById('input-group');
+        this.createOutlayGroupElement = document.getElementById('create-input-group');
+        this.createOutlayGroupElement.addEventListener('click', this.createOutlayGroup.bind(this));
+
+
+    }
+
+    async createOutlayGroup() {
+
+        if (!this.inputGroupElement.value) {
+            alert('Поле не заполнено');
+            return;
+        }
+
+        const newValue = this.inputGroupElement.value.trim();
+
+        if (newValue) { //если в инпут введена новая категория
+
+            const result = await HttpUtils.request('/categories/expense', 'POST', true, {
+                title: this.inputGroupElement.value
+            });
+
+            if (!result.response) {
+                return alert ('Не удалось создать новую категорию');
+            }
+
+            if (result.error && result.response.message === 'This record already exists') {
+                return alert ('Данная категория уже присутствует в вашем списке категорий');
+            }
+
+            if (result.response && result.response.id && result.response.title) {
+                localStorage.setItem('create-outlay-group', JSON.stringify({id: result.response.id, title: result.response.title}));
+                window.location.hash = '#/outlay-groups';
+            }
+        } else {
+            return alert ('Новая категория не введена');
+        }
+    }
+
+
+}

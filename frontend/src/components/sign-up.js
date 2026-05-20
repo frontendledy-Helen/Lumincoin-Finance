@@ -6,7 +6,7 @@ import config from "../config/config.js";
 export class SignUp {
     constructor() {
 
-        // запретим пользователю вернулься на страницу login , если он уже прошел под паролем
+        //запретим пользователю вернулься на страницу login , если он уже прошел под паролем
         if (AuthUtils.getAuthInfo(AuthUtils.accessTokenKey)) { // если в localStorage уже записаны accessToken
             window.location.hash = '#/dashboard';  // останавливаем Ф и сразу отправляем пользователя на главную страницу
             return;
@@ -89,7 +89,6 @@ export class SignUp {
             }
 
 
-            // // если пользователь найден сохраняем его данные с бэкенда сюда
             // AuthUtils.setAuthInfo(result.response.tokens.accessToken, result.response.tokens.refreshToken, {
             //     id: result.response.user.id,
             //     name: result.response.user.name

@@ -11,7 +11,7 @@ export class AuthUtils {
     // можем использовать на любой странице в таком виде: AuthUtils.accessTokenKey , но лучше создать Ф
 
 
-    // используем на странице login.html и sign-up.html
+    // используем на странице login.html
     // метод setAuthInfo устанавливает значения
     static setAuthInfo(accessToken, refreshToken, user = null) { // записать в localStorage полученные токены с бэкенд, userInfo не обязательный
         localStorage.setItem(this.accessTokenKey, accessToken);
@@ -20,7 +20,6 @@ export class AuthUtils {
         if (user) {  // обезопасим, в случае ошибки с бэкенда
             localStorage.setItem(this.userTokenKey, JSON.stringify(user));
         }
-
     }
 
     // используем на странице logout.html
@@ -60,7 +59,7 @@ export class AuthUtils {
         }
     }
 
-    // запрос на обновлние токена
+    // запрос на обновление токена
     // Ф по запросу request не будем использовать, чтобы не зациклить функции, сделаем отдельный запрос
     static async updateRefreshToken() {  // Ф вернет false или true , получилось обновить токен ли нет
         let result = false; // по умолчанию токен не найден, такую фишку можем использовать, когда результат Ф false или true
@@ -85,7 +84,6 @@ export class AuthUtils {
         if (!result) { // если не получилось обновить токены
             this.removeAuthInfo(); // удаляем все старые токены, чтобы пользователь залогинился заново
         }
-
         return result; // если не нашли refreshToken то вернется false, если токены успешно обновились то вернется true
     }
 }

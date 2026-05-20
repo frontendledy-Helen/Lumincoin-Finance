@@ -3,106 +3,7 @@
     <h1 class="mb-4 mt-xl-5 mt-lg-5 mt-md-5 mt-sm-0">Расходы</h1>
 
     <div class="container-fluid m-0">
-        <div class="row gap-3">
-            <div class="col-12 col-sm-10 col-md-8 col-lg-4 col-xxl-3 d-flex flex-column p-3 border">
-                <h3>Еда</h3>
-                <div class="d-flex gap-2 buttons">
-                    <a href="#/edit-outlay-group">
-                        <button type="button" class="btn btn-primary fs-md">Редактировать</button>
-                    </a>
-                    <button type="button" class="btn btn-danger fs-md" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">Удалить
-                    </button>
-                </div>
-            </div>
-            <div class="col-12 col-sm-10 col-md-8 col-lg-4 col-xxl-3 d-flex flex-column p-3 border">
-                <h3>Жилье</h3>
-                <div class="d-flex gap-2 buttons">
-                    <a href="#/edit-outlay-group">
-                        <button type="button" class="btn btn-primary fs-md">Редактировать</button>
-                    </a>
-                    <button type="button" class="btn btn-danger fs-md" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">Удалить
-                    </button>
-                </div>
-            </div>
-            <div class="col-12 col-sm-10 col-md-8 col-lg-4 col-xxl-3 d-flex flex-column p-3 border">
-                <h3>Здоровье</h3>
-                <div class="d-flex gap-2 buttons">
-                    <a href="#/edit-outlay-group">
-                        <button type="button" class="btn btn-primary fs-md">Редактировать</button>
-                    </a>
-                    <button type="button" class="btn btn-danger fs-md" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">Удалить
-                    </button>
-                </div>
-            </div>
-            <div class="col-12 col-sm-10 col-md-8 col-lg-4 col-xxl-3 d-flex flex-column p-3 border">
-                <h3>Кафе</h3>
-                <div class="d-flex gap-2 buttons">
-                    <a href="#/edit-outlay-group">
-                        <button type="button" class="btn btn-primary fs-md">Редактировать</button>
-                    </a>
-                    <button type="button" class="btn btn-danger fs-md" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">Удалить
-                    </button>
-                </div>
-            </div>
-            <div class="col-12 col-sm-10 col-md-8 col-lg-4 col-xxl-3 d-flex flex-column p-3 border">
-                <h3>Авто</h3>
-                <div class="d-flex gap-2 buttons">
-                    <a href="#/edit-outlay-group">
-                        <button type="button" class="btn btn-primary fs-md">Редактировать</button>
-                    </a>
-                    <button type="button" class="btn btn-danger fs-md" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">Удалить
-                    </button>
-                </div>
-            </div>
-            <div class="col-12 col-sm-10 col-md-8 col-lg-4 col-xxl-3 d-flex flex-column p-3 border">
-                <h3>Одежда</h3>
-                <div class="d-flex gap-2 buttons">
-                    <a href="#/edit-outlay-group">
-                        <button type="button" class="btn btn-primary fs-md">Редактировать</button>
-                    </a>
-                    <button type="button" class="btn btn-danger fs-md" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">Удалить
-                    </button>
-                </div>
-            </div>
-            <div class="col-12 col-sm-10 col-md-8 col-lg-4 col-xxl-3 d-flex flex-column p-3 border">
-                <h3>Развлечения</h3>
-                <div class="d-flex gap-2 buttons">
-                    <a href="#/edit-outlay-group">
-                        <button type="button" class="btn btn-primary fs-md">Редактировать</button>
-                    </a>
-                    <button type="button" class="btn btn-danger fs-md" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">Удалить
-                    </button>
-                </div>
-            </div>
-            <div class="col-12 col-sm-10 col-md-8 col-lg-4 col-xxl-3 d-flex flex-column p-3 border">
-                <h3>Счета</h3>
-                <div class="d-flex gap-2 buttons">
-                    <a href="#/edit-outlay-group">
-                        <button type="button" class="btn btn-primary fs-md">Редактировать</button>
-                    </a>
-                    <button type="button" class="btn btn-danger fs-md" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">Удалить
-                    </button>
-                </div>
-            </div>
-            <div class="col-12 col-sm-10 col-md-8 col-lg-4 col-xxl-3 d-flex flex-column p-3 border">
-                <h3>Спорт</h3>
-                <div class="d-flex gap-2 buttons">
-                    <a href="#/edit-outlay-group">
-                        <button type="button" class="btn btn-primary fs-md">Редактировать</button>
-                    </a>
-                    <button type="button" class="btn btn-danger fs-md" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal">Удалить
-                    </button>
-                </div>
-            </div>
+        <div id="new-category" class="row gap-3">
             <div class="col-12 col-sm-10 col-md-8 col-lg-4 col-xxl-3 d-flex flex-column p-3 border">
                 <div class="mx-auto my-4">
                     <a href="#/create-outlay-group">
@@ -122,7 +23,7 @@
                 <p class="m-0">Вы действительно хотите удалить категорию?</p>
             </div>
             <div class="modal-footer justify-content-center border-top-0 text-center px-0 pt-0 pb-4">
-                <button type="button" class="btn btn-success">Да, удалить</button>
+                <button type="button" class="btn btn-success" id="delete-input-group">Да, удалить</button>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Не удалять</button>
             </div>
         </div>
