@@ -65,7 +65,6 @@ export class Login {
                 name: result.response.user.name,
                 lastName: result.response.user.lastName
             })
-            console.trace('setAuthInfo called');
 
             // если пользователь найден сохраняем его данные с бэкенда сюда
             // это обрабатываем в файле utils/auth-utils.js

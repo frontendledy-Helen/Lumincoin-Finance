@@ -16,6 +16,6 @@ export class Logout {
             refreshToken: AuthUtils.getAuthInfo(AuthUtils.refreshTokenKey), // отправляем на бекенд refreshToken который у нас сохранен в localStorage
         });
 
-        AuthUtils.removeAuthInfo(); // разлогинем пользователя
+        AuthUtils.clearAllStorage(); // разлогинем пользователя
     }
 }

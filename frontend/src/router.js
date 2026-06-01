@@ -15,6 +15,7 @@ import {EditOutlayGroups} from "./components/edit-outlay-group.js";
 import {CreatOutlayGroup} from "./components/create-outlay-group.js";
 import {CreateNewTransaction} from "./components/create-new-transaction.js";
 import {DeleteTransaction} from "./components/delete-transaction.js";
+import {AuthUtils} from "./utils/auth-utils.js";
 
 
 export class Router {
@@ -184,6 +185,11 @@ export class Router {
         window.addEventListener('hashchange', this.activateRoute.bind(this)); // запустить роутер при переходе по страницам, вперед, назад, поменялся URL
     }
 
+    isLoggedIn() { //проверка-залогинен пользователь или нет
+        return !!AuthUtils.getAuthInfo(AuthUtils.accessTokenKey)
+            && !!AuthUtils.getAuthInfo(AuthUtils.refreshTokenKey);
+    }
+
     async activateRoute() {
 
         // для опеределения, какой сейчас открыт роут, сначала проверим, что у нас сейчас находится в url адресе
@@ -194,6 +200,12 @@ export class Router {
         if (!newRoute) { // если роут не подгрузился из URL
             window.location.hash = '#/'; //отправляем пользователя на главную страницу
             return; //и останавливаем работу Ф
+        }
+
+        // Залогинен → не показываем login и signup, уходим на dashboard
+        if ((urlRoute === '#/' || urlRoute === '#/signup') && this.isLoggedIn()) {
+            window.location.hash = '#/dashboard';
+            return; // не грузим login.html
         }
 
         if (newRoute) {

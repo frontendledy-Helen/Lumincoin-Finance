@@ -58,7 +58,6 @@ export class CreateNewTransaction {
             return alert('Ошибка загрузки категорий');
         }
 
-        console.log(result.response)
         this.fillCategorySelect(result.response); // заполнение селекта с полученными категориями с бэкенда
     }
 
@@ -79,7 +78,7 @@ export class CreateNewTransaction {
         let isValid = true;  // по умолчанию форма наша валидна
 
         // сделаем однотипную проверку всех полей с помощью перебора массива ячеек
-        let arrayOfCells = [this.typeNewElement, this.categoryNewElement, this.dateNewElement, this.commentNewElement]; // массив текстовых инпутов, по которым будем проходиться во время валидации
+        let arrayOfCells = [this.typeNewElement, this.categoryNewElement, this.dateNewElement]; // массив текстовых инпутов, по которым будем проходиться во время валидации
 
         for (let i = 0; i < arrayOfCells.length; i++) {  // пройдемся циклом по массиву
             if (arrayOfCells[i].value) { // если поле валидно
@@ -90,6 +89,11 @@ export class CreateNewTransaction {
             }
         }
 
+        if (!this.commentNewElement.value) {
+            this.commentNewElement.value = 'без комментариев';
+            isValid = true;
+        }
+
         const amountStr = this.amountNewElement.value.trim().replace(',', '.');
         const amountRegex = /^\d+([.,]\d{1,2})?$/;
         if (amountStr && amountRegex.test(amountStr) && Number(amountStr) > 0) {
@@ -98,8 +102,6 @@ export class CreateNewTransaction {
             this.amountNewElement.classList.add('is-invalid');
             isValid = false;
         }
-
-
         return isValid; // после проверок переменная isValid примет на себя состояние false или true и вернет это состояние в функцию login() {}
     }
 
@@ -127,7 +129,6 @@ export class CreateNewTransaction {
             if (result.error || !result.response) {
                 return alert('Не удалось создать операцию!');
             }
-            console.log(result.response)
             window.location.hash = '#/transactions';
         }
     }

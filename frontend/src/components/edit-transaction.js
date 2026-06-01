@@ -186,10 +186,6 @@ export class EditTransaction {
             return;
         }
 
-        if (!this.validateForm()) {
-            return alert('Проверьте заполнение полей');
-        }
-
         if (this.validateForm()) { // если форма валидна отправляем все заполненные поля на бэкенд
 
             // если форма валидна отправляем все заполненные поля на бэкенд

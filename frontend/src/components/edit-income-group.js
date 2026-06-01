@@ -60,9 +60,11 @@ export class EditIncomeGroups {
 
         const newValue = this.inputGroupElement.value.trim();
 
-        if (!newValue) {
-            alert('Поле не заполнено');
-            return;
+        if (newValue) { // если поле не путое
+            this.inputGroupElement.classList.remove('is-invalid'); // если пользователь исправил ошибку удалим красное поле
+        } else { // если поле не заполнено
+            this.inputGroupElement.classList.add('is-invalid'); // добавим класс который выводит сообщение об ошибке и краснит инпут
+            return; // isValid = false; // меняем состояние переменной на false, если после проверки оказались в этом месте
         }
 
         if (newValue === this.originalTitle) {

@@ -30,6 +30,10 @@ export class AuthUtils {
         localStorage.removeItem(this.userTokenKey);
     }
 
+    static clearAllStorage() {
+        localStorage.clear(); // полная очистка хранилища при выходе
+    }
+
     // метод getAuthInfo получает значения и отдает их нам
     // т.к. нам иногда нужны разные значения ключа - key, мы используем if
     static getAuthInfo(key = null) { //по умолчанию key равно null

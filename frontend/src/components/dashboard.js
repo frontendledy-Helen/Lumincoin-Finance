@@ -14,16 +14,16 @@ export class Dashboard {
 
         }
 
-        // начало - графики
-        this.incomeChart = null;
-        this.expenseChart = null;
-        this.chartColors = [
-            '#dc3545', // Red
-            '#fd7e14', // Orange
-            '#ffc107', // Yellow
-            '#20c997', // Green
-            '#0d6efd', // Blue
-        ];
+        // // начало - графики // Инициализация переменных графиков
+        // this.incomeChart = null; // график доходы
+        // this.expenseChart = null; // грфик расходы
+        // this.chartColors = [
+        //     '#dc3545', // Red
+        //     '#fd7e14', // Orange
+        //     '#ffc107', // Yellow
+        //     '#20c997', // Green
+        //     '#0d6efd', // Blue
+        // ];
 
         this.periodButtons = document.querySelectorAll('.period-btn');
         this.intervalBlock = document.getElementById('interval-block');
@@ -33,6 +33,10 @@ export class Dashboard {
         //найдем элементы графиков
         this.incomeCanvas = document.getElementById('incomeChart');
         this.expenseCanvas = document.getElementById('outlayChart');
+
+        //сюда создаем кнопки - подпись категорий для графика
+        this.incomeLegendElement = document.getElementById('income-legend');
+        this.expenseLegendElement = document.getElementById('expense-legend');
 
         this.setActivePeriod('today');
         this.initPeriodFilters();
@@ -86,6 +90,7 @@ export class Dashboard {
         }
     }
 
+    //собрать url для запроса операций с бэкенда
     buildOperationsUrl() {
         const params = new URLSearchParams();
         if (this.currentPeriod === 'today') {
@@ -102,7 +107,7 @@ export class Dashboard {
         return `/operations?${params.toString()}`;
     }
 
-    async getOperations() {
+    async getOperations() { //получить операции с сервера и обновить графики.
         const url = this.buildOperationsUrl();
         const result = await HttpUtils.request(url);
         if (result.error || !Array.isArray(result.response)) {
@@ -125,22 +130,23 @@ export class Dashboard {
         };
     }
 
-    getBackgroundColors(count) {
+    getBackgroundColors(count) { // получим рандомные цвета - генерация по count
         const colors = [];
         for (let i = 0; i < count; i++) {
-            colors.push(this.chartColors[i % this.chartColors.length]);
+            const hue = Math.floor((360 / count) * i);
+            colors.push(`hsl(${hue}, 65%, 55%)`);
         }
         return colors;
     }
 
-    buildPieConfig(labels, values) {
+    buildPieConfig(labels, values, colors) {
         return {
             type: 'pie',
             data: {
                 labels,
                 datasets: [{
                     data: values,
-                    backgroundColor: this.getBackgroundColors(labels.length),
+                    backgroundColor: colors,
                 }],
             },
             options: {
@@ -155,8 +161,8 @@ export class Dashboard {
         };
     }
 
-    renderOrUpdateChart(canvas, chartRef, labels, values) {
-        const config = this.buildPieConfig(labels, values);
+    renderOrUpdateChart(canvas, labels, values, colors) {
+        const config = this.buildPieConfig(labels, values, colors);
         if (!labels.length) {
             labels = ['Нет данных'];
             values = [1];
@@ -174,48 +180,53 @@ export class Dashboard {
     updateCharts(operations) {
         const incomeData = this.aggregateByCategory(operations, 'income');
         const expenseData = this.aggregateByCategory(operations, 'expense');
-
         const incomeColors = this.getBackgroundColors(incomeData.labels.length);
         const expenseColors = this.getBackgroundColors(expenseData.labels.length);
 
-        this.incomeChart = this.renderOrUpdateChart(
+        this.renderOrUpdateChart(
             this.incomeCanvas,
-            this.incomeChart,
             incomeData.labels,
-            incomeData.values
+            incomeData.values,
+            incomeColors
         );
-        this.expenseChart = this.renderOrUpdateChart(
+
+        this.renderOrUpdateChart(
             this.expenseCanvas,
-            this.expenseChart,
             expenseData.labels,
-            expenseData.values
+            expenseData.values,
+            expenseColors
         );
-        this.updateLegend('income', incomeData.labels);
-        this.updateLegend('expense', expenseData.labels);
+        this.buildLegend(this.incomeLegendElement, incomeData.labels, incomeColors);
+        this.buildLegend(this.expenseLegendElement, expenseData.labels, expenseColors);
     }
 
-    // Подписи под цветными кнопками
-    updateLegend(side, labels, colors = []) {
-        const container = document.querySelector(
-            side === 'income'
-                ? '.my-border-block .color-section'
-                : '.col-xxl-6:not(.my-border-block) .color-section'
-        );
+    // Подписи под цветными кнопками - создание
+    buildLegend (container, labels, colors) {
         if (!container) return;
-        const labelElements = container.querySelectorAll('label');
-        labelElements.forEach((label, i) => {
-            const span = label.querySelector('span');
-            const btn = label.querySelector('button');
-            if (labels[i]) {
-                label.style.display = '';
-                span.textContent = labels[i];
-                if (btn && colors[i]) {
-                    btn.style.backgroundColor = colors[i];
-                    btn.style.borderColor = colors[i];
-                }
-            } else {
-                label.style.display = 'none'; // нет категории — скрыть пункт
-            }
+
+        container.innerHTML = ''; //очистить старую легенду
+
+        if (!labels.length) {
+            container.innerHTML = '<span class="text-muted">Нет данных</span>';
+            return;
+        }
+
+        //создание надписей для категорий
+        labels.forEach((categoryName, i) => {
+            const label = document.createElement('label');
+            label.className = 'form-check-inline';
+
+            const btn = document.createElement('button');
+            btn.type = 'button';
+            btn.className = 'btn btn-color';
+            btn.style.backgroundColor = colors[i];
+            btn.style.borderColor = colors[i];
+
+            const span = document.createElement('span');
+            span.textContent = categoryName;
+            label.appendChild(btn);
+            label.appendChild(span);
+            container.appendChild(label);
         });
     }
 }

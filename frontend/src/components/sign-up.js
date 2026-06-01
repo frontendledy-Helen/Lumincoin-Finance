@@ -6,7 +6,7 @@ import config from "../config/config.js";
 export class SignUp {
     constructor() {
 
-        //запретим пользователю вернулься на страницу login , если он уже прошел под паролем
+        //запретим пользователю вернуться на страницу login , если он уже прошел под паролем
         if (AuthUtils.getAuthInfo(AuthUtils.accessTokenKey)) { // если в localStorage уже записаны accessToken
             window.location.hash = '#/dashboard';  // останавливаем Ф и сразу отправляем пользователя на главную страницу
             return;
