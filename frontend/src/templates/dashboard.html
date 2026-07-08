@@ -3,86 +3,59 @@
     <h1 class="mt-xl-5 mt-lg-5 mt-md-5 mt-sm-0">Главная</h1>
     <div class="container-fluid m-0 ps-0 pe-0">
         <div class="mt-5">
-            <div class="row gx-0 d-grid gap-2 d-md-flex d-lg-flex mb-3 me-0">
-                <button class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-secondary" type="button">Сегодня
+            <div class="row gx-0 d-grid gap-2 d-md-flex d-lg-flex mb-3 me-0" id="period-filters">
+                <button type="button" data-period="today"
+                        class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-secondary period-btn">
+                    Сегодня
                 </button>
-                <button class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary" type="button">
+                <button type="button" data-period="week"
+                        class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary period-btn">
                     Неделя
                 </button>
-                <button class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary" type="button">
+                <button type="button" data-period="month"
+                        class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary period-btn">
                     Месяц
                 </button>
-                <button class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary" type="button">Год
+                <button type="button" data-period="year"
+                        class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary period-btn">
+                    Год
                 </button>
-                <button class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary" type="button">Все
+                <button type="button" data-period="all"
+                        class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary period-btn">
+                    Все
                 </button>
-                <button class="col-12 col-md-4 col-lg-2 col-xxl-auto btn btn-outline-secondary" type="button">
+                <button type="button" data-period="interval"
+                        class="col-12 col-md-4 col-lg-2 col-xxl-auto btn btn-outline-secondary period-btn">
                     Интервал
                 </button>
-                <div class="col-12 col-md-5 col-lg-5 col-xxl-3 choice-date">
+
+                <div class="col-12 col-md-5 col-lg-5 col-xxl-3 choice-date d-none align-items-center gap-2"
+                     id="interval-block">
                     <span>с</span>
-                    <button type="button" class="btn btn-link">Дата</button>
+                    <input type="date" class="form-control form-control-sm" id="dateFrom">
                     <span>по</span>
-                    <button type="button" class="btn btn-link">Дата</button>
+                    <input type="date" class="form-control form-control-sm" id="dateTo">
                 </div>
             </div>
         </div>
         <div class="row gx-0 mt-5 text-center pt-md-0 pt-lg-5">
             <div class="col-xxl-6 col-lg-12 pb-5 my-border-block">
                 <h2 class="mb-3">Доходы</h2>
-                <div class="color-section mb-5">
-                    <label class="form-check-inline">
-                        <button class="btn btn-color bg-danger" type="button" id="incomeRed"></button>
-                        <span>Red</span>
-                    </label>
-                    <label class="form-check-inline">
-                        <button class="btn btn-color btn-orange" type="button" id="incomeOrange"></button>
-                        <span>Orange</span>
-                    </label>
-                    <label class="form-check-inline">
-                        <button class="btn btn-color bg-warning" type="button" id="incomeYellow"></button>
-                        <span>Yellow</span>
-                    </label>
-                    <label class="form-check-inline">
-                        <button class="btn btn-color btn-green" type="button" id="incomeGreen"></button>
-                        <span>Green</span>
-                    </label>
-                    <label class="form-check-inline">
-                        <button class="btn btn-color bg-primary" type="button" id="incomeBlue"></button>
-                        <span>Blue</span>
-                    </label>
+                <div class="color-section mb-5" id="income-legend">
+                    <!--кнопки создаем в dashboard.js-->
                 </div>
                 <div class="color-circle">
-                    <div class="mx-auto pie-circle-income"></div>
+                    <canvas id="incomeChart" width="260" height="260"></canvas>
                 </div>
             </div>
 
             <div class="col-xxl-6 col-lg-12">
                 <h2 class="mb-3">Расходы</h2>
-                <div class="color-section mb-5">
-                    <label class="form-check-inline">
-                        <button class="btn btn-color bg-danger" type="button" id="expenseRed"></button>
-                        <span>Red</span>
-                    </label>
-                    <label class="form-check-inline">
-                        <button class="btn btn-color btn-orange" type="button" id="expenseOrange"></button>
-                        <span>Orange</span>
-                    </label>
-                    <label class="form-check-inline">
-                        <button class="btn btn-color bg-warning" type="button" id="expenseYellow"></button>
-                        <span>Yellow</span>
-                    </label>
-                    <label class="form-check-inline">
-                        <button class="btn btn-color btn-green" type="button" id="expenseGreen"></button>
-                        <span>Green</span>
-                    </label>
-                    <label class="form-check-inline">
-                        <button class="btn btn-color bg-primary" type="button" id="expenseBlue"></button>
-                        <span>Blue</span>
-                    </label>
+                <div class="color-section mb-5" id="expense-legend">
+                <!--кнопки создаем в dashboard.js-->
                 </div>
                 <div class="color-circle">
-                    <div class="mx-auto pie-circle-expenses"></div>
+                    <canvas id="outlayChart" width="260" height="260"></canvas>
                 </div>
             </div>
         </div>

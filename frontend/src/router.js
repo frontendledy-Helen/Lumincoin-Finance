@@ -7,6 +7,15 @@ import {Transactions} from "./components/transactions.js";
 import {OutlayGroups} from "./components/outlay-groups.js";
 import {Layout} from "./components/layout.js";
 import {EditTransaction} from "./components/edit-transaction.js";
+import {CreatIncomeGroup} from "./components/create-income-group.js";
+import {EditIncomeGroups} from "./components/edit-income-group.js";
+import {DeleteIncomeCategory} from "./components/delete-income-category.js";
+import {DeleteOutlayCategory} from "./components/delete-outlay-category.js";
+import {EditOutlayGroups} from "./components/edit-outlay-group.js";
+import {CreatOutlayGroup} from "./components/create-outlay-group.js";
+import {CreateNewTransaction} from "./components/create-new-transaction.js";
+import {DeleteTransaction} from "./components/delete-transaction.js";
+import {AuthUtils} from "./utils/auth-utils.js";
 
 
 export class Router {
@@ -69,13 +78,19 @@ export class Router {
                 }
             },
             {
+                route: '#/income-groups/delete',  // удаляем категорию дохода или расхода
+                load: () => { //Ф создаем экземпляр класса
+                    new DeleteIncomeCategory();
+                }
+            },
+            {
                 route: '#/create-income-group',  // это сам URL по которому можно перейти и открыть соответствующую страницу, # - исп-ся чтобы не было сразу перехода
                 title: 'Создать категорию доходов',  // заголовок страницы // пропишется в URL
                 template: '/templates/create-income-group.html', // путь до файла html, который мы будем подставлять в файл
                 useLayout: '/templates/layout.html', //делаем подключение aside для всех страниц где он нужен
                 styles: 'styles/style.css', // путь к стилям
                 load: () => { //Ф создаем экземпляр класса
-
+                    new CreatIncomeGroup();
                 }
             },
             {
@@ -85,7 +100,7 @@ export class Router {
                 useLayout: '/templates/layout.html', //делаем подключение aside для всех страниц где он нужен
                 styles: 'styles/style.css', // путь к стилям
                 load: () => { //Ф создаем экземпляр класса
-
+                    new EditIncomeGroups();
                 }
             },
             {
@@ -99,13 +114,19 @@ export class Router {
                 }
             },
             {
+                route: '#/outlay-groups/delete',  // удаляем категорию дохода или расхода
+                load: () => { //Ф создаем экземпляр класса
+                    new DeleteOutlayCategory();
+                }
+            },
+            {
                 route: '#/create-outlay-group',  // это сам URL по которому можно перейти и открыть соответствующую страницу, # - исп-ся чтобы не было сразу перехода
                 title: 'Создать категорию расходов',  // заголовок страницы // пропишется в URL
                 template: '/templates/create-outlay-group.html', // путь до файла html, который мы будем подставлять в файл
                 useLayout: '/templates/layout.html', //делаем подключение aside для всех страниц где он нужен
                 styles: 'styles/style.css', // путь к стилям
                 load: () => { //Ф создаем экземпляр класса
-
+                    new CreatOutlayGroup();
                 }
             },
             {
@@ -115,7 +136,7 @@ export class Router {
                 useLayout: '/templates/layout.html', //делаем подключение aside для всех страниц где он нужен
                 styles: 'styles/style.css', // путь к стилям
                 load: () => { //Ф создаем экземпляр класса
-
+                    new EditOutlayGroups();
                 }
             },
             {
@@ -129,13 +150,19 @@ export class Router {
                 }
             },
             {
+                route: '#/transactions/delete',  // удаляем категорию дохода или расхода
+                load: () => { //Ф создаем экземпляр класса
+                    new DeleteTransaction();
+                }
+            },
+            {
                 route: '#/new-transaction',  // это сам URL по которому можно перейти и открыть соответствующую страницу, # - исп-ся чтобы не было сразу перехода
                 title: 'Создать доход или расход',  // заголовок страницы // пропишется в URL
                 template: '/templates/new-transaction.html', // путь до файла html, который мы будем подставлять в файл
                 useLayout: '/templates/layout.html', //делаем подключение aside для всех страниц где он нужен
                 styles: 'styles/style.css', // путь к стилям
                 load: () => { //Ф создаем экземпляр класса
-
+                    new CreateNewTransaction();
                 }
             },
             {
@@ -158,6 +185,11 @@ export class Router {
         window.addEventListener('hashchange', this.activateRoute.bind(this)); // запустить роутер при переходе по страницам, вперед, назад, поменялся URL
     }
 
+    isLoggedIn() { //проверка-залогинен пользователь или нет
+        return !!AuthUtils.getAuthInfo(AuthUtils.accessTokenKey)
+            && !!AuthUtils.getAuthInfo(AuthUtils.refreshTokenKey);
+    }
+
     async activateRoute() {
 
         // для опеределения, какой сейчас открыт роут, сначала проверим, что у нас сейчас находится в url адресе
@@ -168,6 +200,12 @@ export class Router {
         if (!newRoute) { // если роут не подгрузился из URL
             window.location.hash = '#/'; //отправляем пользователя на главную страницу
             return; //и останавливаем работу Ф
+        }
+
+        // Залогинен → не показываем login и signup, уходим на dashboard
+        if ((urlRoute === '#/' || urlRoute === '#/signup') && this.isLoggedIn()) {
+            window.location.hash = '#/dashboard';
+            return; // не грузим login.html
         }
 
         if (newRoute) {

@@ -8,7 +8,7 @@ export class Logout {
             window.location.hash = '#/';  // останавливаем Ф и сразу отправляем пользователя на страницу login, чтобы зарегистрировался
             return;
         }
-        this.logout().then(); // вызов Ф logout(), !!! срабатывает Promis без .then(), в .then() ничего не передаем, просто чтобы убрать уведомление
+        //this.logout().then(); // вызов делать не нужно сразу
     }
 
     async logout() {
@@ -16,6 +16,6 @@ export class Logout {
             refreshToken: AuthUtils.getAuthInfo(AuthUtils.refreshTokenKey), // отправляем на бекенд refreshToken который у нас сохранен в localStorage
         });
 
-        AuthUtils.removeAuthInfo(); // разлогинем пользователя
+        AuthUtils.clearAllStorage(); // разлогинем пользователя
     }
 }

@@ -26,7 +26,7 @@ export class HttpUtils {
         if (useAuth) { // если useAuth = true // если нужна авторизация
             token = AuthUtils.getAuthInfo(AuthUtils.accessTokenKey); // получим токен из localStorage
             if (token) {
-                params.headers['authorization'] = token; // присвоим в headers авторизацию по токену, чтобы получить данные по запросу
+                params.headers['x-auth-token'] = token; // присвоим в headers авторизацию по токену, чтобы получить данные по запросу
             }
         }
 
@@ -71,5 +71,8 @@ export class HttpUtils {
         }
 
         return result;
+
+
     }
+
 }

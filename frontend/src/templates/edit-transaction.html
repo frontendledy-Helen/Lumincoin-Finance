@@ -6,14 +6,33 @@
         <div class="row gx-0">
             <div class="col-12 col-sm-10 col-md-9 col-lg-6 col-xxl-4 d-flex flex-column">
                 <div class="form-group">
-                    <input class="form-control mb-4" type="text" id="">
-                    <input class="form-control mb-4" type="text" id="">
-                    <input class="form-control mb-4" type="text" id="">
-                    <input class="form-control mb-4" type="text" id="">
-                    <input class="form-control mb-4" type="text" id="">
+                    <div class="mb-4">
+                        <input class="form-control" type="text" id="type" disabled>
+                    </div>
+                    <select class="form-select mb-4" id="category" disabled>
+                        <option value="" disabled selected>Выберите категорию...</option>
+                    </select>
+                    <div class="mb-4">
+                        <input class="form-control" type="text" id="amount" placeholder="Сумма в ₽...">
+                        <div class="invalid-feedback">
+                            Введите числовое значение
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <input class="form-control" type="date" id="date">
+                        <div class="invalid-feedback">
+                            Выберите дату
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <input class="form-control" type="text" id="comment" placeholder="Комментарий...">
+                        <div class="invalid-feedback">
+                            Напишите комментарий
+                        </div>
+                    </div>
                 </div>
                 <div class="d-flex gap-2 buttons">
-                    <button type="button" class="btn btn-success fs-md">Сохранить</button>
+                    <button type="button" class="btn btn-success fs-md" id="saveButton">Сохранить</button>
                     <a href="#/transactions">
                         <button type="button" class="btn btn-danger fs-md">Отмена</button>
                     </a>

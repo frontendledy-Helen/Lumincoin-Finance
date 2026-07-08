@@ -49,7 +49,6 @@ export class Login {
                 rememberMe: false
             });
 
-
            // если у нас пришла с бэкенд ошибка, либо нет response:, либо есть response: но там нет accessToken или нет refreshToken или нет id, name
             if (!result.response) { //если в ответе есть ошибка и нет ответа
                 this.commonErrorElement.innerText = 'Не удалось получить ответ. Обратитесь в поддержку.'
@@ -61,17 +60,20 @@ export class Login {
                 return;
             }
 
-            // если пользователь найден сохраняем его данные с бэкенда сюда
-            AuthUtils.setAuthInfo(result.response.tokens.accessToken, result.response.tokens.refreshToken, {id: result.response.user.id, name: result.response.user.name, lastName: result.response.user.lastName})
+            AuthUtils.setAuthInfo(result.response.tokens.accessToken, result.response.tokens.refreshToken, {
+                id: result.response.user.id,
+                name: result.response.user.name,
+                lastName: result.response.user.lastName
+            })
 
             // если пользователь найден сохраняем его данные с бэкенда сюда
             // это обрабатываем в файле utils/auth-utils.js
-            // localStorage.setItem('accessToken', result.accessToken);
-            // localStorage.setItem('refreshToken', result.refreshToken);
-            // localStorage.setItem('userInfo', JSON.stringify({id: result.id, name: result.name}));
+            // localStorage.setItem('accessToken', result.response.tokens.accessToken);
+            // localStorage.setItem('refreshToken', result.response.tokens.refreshToken);
+            //localStorage.setItem('userInfo', JSON.stringify({name: result.response.user.name, lastName: result.response.user.lastName}));
 
             //переводим пользователя на главную страницу
-            window.location.hash = '#/dashboard'; // такой подход не используем, т.к. будет полная перезагрузка приложения
+            window.location.hash = '#/dashboard'; //
 
             //this.openRoute('#/'); //унивесальный метод перехода на новую страницу без перезагрузки страницы (метод описан на странице router.js)
         }

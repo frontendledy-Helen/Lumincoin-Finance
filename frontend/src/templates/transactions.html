@@ -3,35 +3,46 @@
     <h1 class="mt-xl-5 mt-lg-5 mt-md-5 mt-sm-0">Доходы и расходы</h1>
     <div class="container-fluid m-0 px-0 py-4">
         <div class="d-flex gap-2 buttons">
-            <a href="#/new-transaction">
-                <button type="button" class="btn btn-success fs-md">Создать доход</button>
+            <a href="javascript:void(0)">
+                <button type="button" class="btn btn-success fs-md" id="create-income">Создать доход</button>
             </a>
-            <a href="#/new-transaction">
-                <button type="button" class="btn btn-danger fs-md">Создать расход</button>
+            <a href="javascript:void(0)">
+                <button type="button" class="btn btn-danger fs-md" id="create-outlay">Создать расход</button>
             </a>
         </div>
         <div class="mt-5">
-            <div class="row gx-0 d-grid gap-2 d-md-flex d-lg-flex mb-3 me-0">
-                <button class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-secondary" type="button">Сегодня
+            <div class="row gx-0 d-grid gap-2 d-md-flex d-lg-flex mb-3 me-0" id="period-filters">
+                <button type="button" data-period="today"
+                        class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-secondary period-btn">
+                    Сегодня
                 </button>
-                <button class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary" type="button">
+                <button type="button" data-period="week"
+                        class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary period-btn">
                     Неделя
                 </button>
-                <button class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary" type="button">
+                <button type="button" data-period="month"
+                        class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary period-btn">
                     Месяц
                 </button>
-                <button class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary" type="button">Год
+                <button type="button" data-period="year"
+                        class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary period-btn">
+                    Год
                 </button>
-                <button class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary" type="button">Все
+                <button type="button" data-period="all"
+                        class="col-12 col-md-4 col-lg-2 col-xxl-1 btn btn-outline-secondary period-btn">
+                    Все
                 </button>
-                <button class="col-12 col-md-4 col-lg-2 col-xxl-auto btn btn-outline-secondary" type="button">
+                <button type="button" data-period="interval"
+                        class="col-12 col-md-4 col-lg-2 col-xxl-auto btn btn-outline-secondary period-btn">
                     Интервал
                 </button>
-                <div class="col-12 col-md-5 col-lg-5 col-xxl-3 choice-date">
+
+                <div class="col-12 col-md-5 col-lg-5 col-xxl-3 choice-date d-none align-items-center gap-2"
+                     id="interval-block">
                     <span>с</span>
-                    <button type="button" class="btn btn-link">Дата</button>
+                    <input type="date" class="form-control form-control-sm" id="dateFrom">
                     <span>по</span>
-                    <button type="button" class="btn btn-link">Дата</button>
+                    <input type="date" class="form-control form-control-sm" id="dateTo">
                 </div>
             </div>
         </div>
@@ -53,44 +64,7 @@
             </tr>
             </thead>
             <tbody id="records">
-            <tr>
-                <th class="col-xxl-auto align-middle" scope="row">1</th>
-                <td class="text-success align-middle">доход</td>
-                <td class="align-middle">зарплата</td>
-                <td class="align-middle">25000₽</td>
-                <td class="align-middle">01.04.2026</td>
-                <td class="text-break">много текста много текста много текста много текста много текста</td>
-                <td class="text-center text-nowrap align-middle">
-                    <div class="d-inline-flex gap-2 align-items-center">
-                        <a data-bs-toggle="modal"
-                           data-bs-target="#exampleModal" href="javascript:void(0)">
-                            <img src="../images/trash-icon.png" alt="Trash icon">
-                        </a>
-                        <a href="#/edit-transaction">
-                            <img src="../images/pen-icon.png" alt="Pen icon">
-                        </a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th class="col-xxl-auto align-middle" scope="row">2</th>
-                <td class="text-danger align-middle">расход</td>
-                <td class="align-middle">жильё</td>
-                <td class="align-middle">2500₽</td>
-                <td class="align-middle">02.04.2026</td>
-                <td class="text-break"></td>
-                <td class="text-center text-nowrap align-middle">
-                    <div class="d-inline-flex gap-2 align-items-center">
-                        <a data-bs-toggle="modal"
-                           data-bs-target="#exampleModal" href="javascript:void(0)">
-                            <img src="../images/trash-icon.png" alt="Trash icon">
-                        </a>
-                        <a href="#/edit-transaction.html">
-                            <img src="../images/pen-icon.png" alt="Pen icon">
-                        </a>
-                    </div>
-                </td>
-            </tr>
+            <!--создаем таблицу в файле transactions.js-->
             </tbody>
         </table>
     </div>
@@ -105,7 +79,7 @@
                 <p class="m-0">Вы действительно хотите удалить операцию?</p>
             </div>
             <div class="modal-footer justify-content-center border-top-0 text-center px-0 pt-0 pb-4">
-                <button type="button" class="btn btn-success">Да, удалить</button>
+                <button type="button" class="btn btn-success" id="delete-operation">Да, удалить</button>
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Не удалять</button>
             </div>
         </div>
